@@ -5,7 +5,6 @@ local a = CreateFrame("Frame")
 a:RegisterEvent("PLAYER_ENTERING_WORLD")
 a:SetScript("OnEvent", function(self)
 
-
     --------------------------
     -- Styling of ActionBars
     --------------------------
@@ -42,6 +41,20 @@ a:SetScript("OnEvent", function(self)
     CharacterMicroButton:SetPoint("BOTTOMRIGHT",UIParent,-260,0)
     CharacterMicroButton.SetPoint = function() end
     MicroButtonAndBagsBar:Hide()
+    -- MicroButtonAndBagsBar:Hide()
+    -- CharacterMicroButton:Hide()
+    -- SpellbookMicroButton:Hide()
+    -- TalentMicroButton:Hide()
+    -- AchievementMicroButton:Hide()
+    -- QuestLogMicroButton:Hide()
+    -- GuildMicroButton:Hide()
+    -- LFDMicroButton:Hide()
+    -- CollectionsMicroButton:Hide()
+    -- EJMicroButton:Hide()
+    -- MainMenuMicroButton:Hide()
+    -- StoreMicroButton:SetScript("OnShow",StoreMicroButton.Hide)
+    -- StoreMicroButton.Show = function() end
+    -- StoreMicroButton:Hide()
 
     --------------------------
     -- MultiBarBottomLeft
