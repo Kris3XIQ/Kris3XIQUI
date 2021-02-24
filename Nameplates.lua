@@ -29,6 +29,8 @@ n:SetScript("OnEvent", function(n, event, ...)
 
             -- Health Bar My Heal Prediction
             frame.healthBar.myHealPrediction:SetTexture(healthBarTexture)
+
+            -- BuffFrame Position
         end)
     end
     -- Mana Bar

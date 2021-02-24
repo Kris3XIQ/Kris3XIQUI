@@ -12,9 +12,6 @@ a:SetScript("OnEvent", function(self)
     ActionBarUpButton:Hide()
     ActionBarDownButton:Hide()
 
-    -- Set MainMenuBar
-    MainMenuBar:SetScale(1.2)
-
     --------------------------
     -- ExtraActionButton
     --------------------------
@@ -57,29 +54,24 @@ a:SetScript("OnEvent", function(self)
     -- StoreMicroButton:Hide()
 
     --------------------------
+    -- MainMenuBar
+    --------------------------
+    -- ActionButton 1-12
+    for i = 1, 12 do _G["ActionButton"..i]:SetScale(1.5) end
+
+    --------------------------
     -- MultiBarBottomLeft
     --------------------------
     -- MultiBarBottomLeft
-    MultiBarBottomLeftButton1:SetPoint("BOTTOMLEFT",ActionButton1,"TOPLEFT",-106,45)
+    -- MultiBarBottomLeftButton1:SetPoint("BOTTOMLEFT",ActionButton1,"TOPLEFT",-106,45)
+    MultiBarBottomLeftButton1:SetPoint("BOTTOMLEFT",MultiBarBottomRightButton1,"TOPLEFT",-29,10)
     MultiBarBottomLeftButton1.SetPoint = function() end
     MultiBarBottomLeft.SetPoint = function() end
     MultiBarBottomLeft:ClearAllPoints()
     MultiBarBottomLeft:SetPoint("BOTTOM", UIParent, "BOTTOM",0,200)
-    MultiBarBottomLeft:SetScale(1.4)
+    for i = 1, 12 do _G["MultiBarBottomLeftButton"..i]:SetScale(1.5) end
     -- Individual Keys for MultiBarBottomLeft
-    MultiBarBottomLeftButton5:SetScale(1.4)
-    MultiBarBottomLeftButton6:SetScale(1.4)
-    MultiBarBottomLeftButton7:SetScale(1.4)
-    MultiBarBottomLeftButton8:SetScale(1.4)
-
-    --------------------------
-    -- MultiBarLeft
-    --------------------------
-    MultiBarLeftButton1:ClearAllPoints()
-    MultiBarLeftButton1:SetPoint("CENTER",UIParent,"RIGHT",-60,200)
-    MultiBarLeftButton1.SetPoint = function() end
-    MultiBarLeft.SetPoint = function() end
-    for i = 1, 12 do _G["MultiBarLeftButton"..i]:SetScale(1.4) end
+    for i = 5, 8 do _G["MultiBarBottomLeftButton"..i]:SetScale(2) end
 
     --------------------------
     -- MultiBarBottomRight
@@ -92,7 +84,16 @@ a:SetScript("OnEvent", function(self)
     MultiBarBottomRightButton7:ClearAllPoints()
     MultiBarBottomRightButton7:SetPoint("LEFT",MultiBarBottomRightButton6,"RIGHT",6,0)
     MultiBarBottomRightButton7.SetPoint = function() end
-    MultiBarBottomRight:SetScale(1.0)
+    for i = 1, 12 do _G["MultiBarBottomRightButton"..i]:SetScale(1.5) end
+
+    --------------------------
+    -- MultiBarLeft
+    --------------------------
+    MultiBarLeftButton1:ClearAllPoints()
+    MultiBarLeftButton1:SetPoint("CENTER",UIParent,"RIGHT",-60,200)
+    MultiBarLeftButton1.SetPoint = function() end
+    MultiBarLeft.SetPoint = function() end
+    for i = 1, 12 do _G["MultiBarLeftButton"..i]:SetScale(1.4) end
 
     --------------------------
     -- MultiBarRight
@@ -101,7 +102,7 @@ a:SetScript("OnEvent", function(self)
     MultiBarRightButton1:SetPoint("CENTER",UIParent,"RIGHT",-20,200)
     MultiBarRightButton1.SetPoint = function() end
     MultiBarRight.SetPoint = function() end
-    MultiBarRight:SetScale(1.0)
+    -- MultiBarRight:SetScale(1.0)
     for i = 1, 12 do _G["MultiBarRightButton"..i]:SetScale(1.4) end
 
     --------------------------

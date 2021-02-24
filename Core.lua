@@ -2,6 +2,7 @@ local a = CreateFrame("Frame")
 a:RegisterEvent("PLAYER_ENTERING_WORLD")
 a:SetScript("OnEvent", function(self)
 
+    local statusBarTexture = [[Interface\AddOns\Kris3XIQUI\Media\Textures\NormTex2]]
     m="MainMenuBarArtFrame";_G[m.."Background"]:Hide();_G[m].PageNumber:Hide();_G[m].LeftEndCap:Hide();_G[m].RightEndCap:Hide();ActionButton1:ClearAllPoints() ActionButton1:SetPoint('BOTTOM',_G[m.."Background"],-231,35)
     m="MultiBarBottomRight" _G[m.."Button7"]:SetPoint("BOTTOMLEFT",_G[m.."Button1"],"TOPLEFT",0,4) UIPARENT_MANAGED_FRAME_POSITIONS[m].xOffset=6; MainMenuBar.GetYOffset=function() return -30 end UIParent_ManageFramePositions()
     m="MultiBarBottomLeft" _G[m.."Button1"]:SetPoint("BOTTOMLEFT","ActionButton1","TOPLEFT",-20,10) UIPARENT_MANAGED_FRAME_POSITIONS[m].xOffset=6; MainMenuBar.GetYOffset=function() return -30 end UIParent_ManageFramePositions()
@@ -13,6 +14,7 @@ a:SetScript("OnEvent", function(self)
     -- resize bars
     --for i = 1, 12 do _G["ActionButton"..i]:SetScale(1.0) end
 
+    GameTooltipStatusBarTexture:SetTexture(statusBarTexture)
     --------------------------
     -- BuffFrames
     --------------------------
