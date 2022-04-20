@@ -14,7 +14,18 @@ a:SetScript("OnEvent", function(self)
     -- resize bars
     --for i = 1, 12 do _G["ActionButton"..i]:SetScale(1.0) end
 
+    --------------------------
+    -- Power
+    --------------------------
+    PlayerPowerBarAlt:ClearAllPoints()
+    PlayerPowerBarAlt:SetMovable(true)
+    PlayerPowerBarAlt:SetUserPlaced(true)
+    PlayerPowerBarAlt:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 250)
+    --------------------------
+    -- Tooltip
+    --------------------------
     GameTooltipStatusBarTexture:SetTexture(statusBarTexture)
+
     --------------------------
     -- BuffFrames
     --------------------------

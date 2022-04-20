@@ -17,7 +17,8 @@ a:SetScript("OnEvent", function(self)
     --------------------------
     -- ExtraActionButton
     ExtraActionButton1:ClearAllPoints()
-    ExtraActionButton1:SetPoint("CENTER",UIParent,0,-320)
+    -- ExtraActionButton1:SetPoint("BOTTOM",UIParent, "BOTTOM",0,-320)
+    ExtraActionButton1:SetPoint("BOTTOM",UIParent, "BOTTOM",0,200)
     ExtraActionButton1:SetScale(1.5)
     ExtraActionButton1.SetPoint = function() end
 
@@ -130,6 +131,19 @@ end)
 --------------------------
 -- ActionBarFont
 --------------------------
+-- Library (Shortcuts)
+local Expressway = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\Expressway.ttf"
+local BrutalBlack = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\BrutalType-Black.ttf"
+local BrutalBold = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\BrutalType-Bold.ttf"
+local BrutalExtraBold = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\BrutalType-ExtraBold.ttf"
+local BrutalLight = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\BrutalType-Light.ttf"
+local BrutalMedium = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\BrutalType-Medium.ttf"
+local BrutalRegular = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\BrutalType-Regular.ttf"
+local BrutalThin = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\BrutalType-Thin.ttf"
+local OpenSansCondensedBold = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\OpenSansCondensed-Bold.ttf"
+local PTSansNarrow = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\PTSansNarrow.ttf"
+local RobotoBold = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\Roboto-Bold.ttf"
+local RobotoMedium = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\Roboto-Medium.ttf"
 -- ActionBarFont
 local f = CreateFrame("Frame")
 f:RegisterEvent("PLAYER_ENTERING_WORLD")
@@ -137,13 +151,18 @@ f:RegisterEvent("UPDATE_BINDINGS")
 f:SetScript("OnEvent", function(self)
     function updateHotKeyText()
         local ActionBars = {'Action','MultiBarBottomLeft','MultiBarBottomRight','MultiBarRight','MultiBarLeft'}
-        local DefaultFont, DefaultFontSize, DefaultFontOutline = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\Expressway.ttf", 14, "OUTLINE"
+        local DefaultFont, DefaultFontSize, DefaultFontOutline = BrutalBold, 14, "OUTLINE"
+        -- local DefaultFont, DefaultFontSize, DefaultFontOutline = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\OpenSansCondensed-Bold.ttf", 14, "OUTLINE"
         for _, barName in pairs(ActionBars) do
             for i = 1, 12 do
                 local button = _G[barName .. 'Button' .. i]
                 local hotkey = button['HotKey']
                 local text = hotkey:GetText()
                 hotkey:SetFont(DefaultFont, DefaultFontSize, DefaultFontOutline)
+                local macro = button['Name']
+                local macroText = macro:GetText()
+                macro:SetFont(DefaultFont, DefaultFontSize, DefaultFontOutline)
+                
             end
         end
     end

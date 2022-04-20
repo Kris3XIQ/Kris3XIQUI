@@ -1,6 +1,6 @@
 ## Interface: 90000
 ## Title: KrisUI
-##OptionalDeps: AdvancedInterfaceOptions
+## OptionalDeps: AdvancedInterfaceOptions
 
 Actionbars.lua
 Autorepair.lua
