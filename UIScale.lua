@@ -9,4 +9,4 @@ f:SetScript("OnEvent", function(self, event)
     f:UnregisterAllEvents()
 end)
 
-DEFAULT_CHAT_FRAME:AddMessage("|cffFF7D0AKris3XIQ: |r|cFF33FF22UIscale loaded successfully, set to 0.53|r")
+DEFAULT_CHAT_FRAME:AddMessage("|cffFF7D0AKris3XIQ: |r|cFF33FF22UIscale loaded successfully, set to " + UIScale + "|r")

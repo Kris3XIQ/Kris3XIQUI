@@ -2,43 +2,27 @@
 -- v1.0.0
 
 local a = CreateFrame("Frame")
-a:RegisterEvent("PLAYER_ENTERING_WORLD")
+a:RegisterEvent("ADDON_LOADED")
+a:RegisterEvent("PLAYER_TALENT_UPDATE")
+a:RegisterEvent("PLAYER_TARGET_CHANGED")
+a:RegisterEvent("UNIT_TARGET")
 a:SetScript("OnEvent", function(self)
-
-    --------------------------
-    -- Styling of ActionBars
-    --------------------------
-    -- Hide PageScrollingButtons
+    -- Miscellaneous
     ActionBarUpButton:Hide()
     ActionBarDownButton:Hide()
-
-    --------------------------
-    -- ExtraActionButton
-    --------------------------
-    -- ExtraActionButton
-    ExtraActionButton1:ClearAllPoints()
-    -- ExtraActionButton1:SetPoint("BOTTOM",UIParent, "BOTTOM",0,-320)
-    ExtraActionButton1:SetPoint("BOTTOM",UIParent, "BOTTOM",0,200)
-    ExtraActionButton1:SetScale(1.5)
-    ExtraActionButton1.SetPoint = function() end
-
-    --------------------------
-    -- Pet Bar
-    --------------------------
-    -- Pet bar cleanup
-    PetActionButton1:ClearAllPoints()
-    PetActionButton1:SetPoint("CENTER", UIParent, "BOTTOM", -170, 150)
-    for i=1, 10 do _G["PetActionButton"..i]:SetParent(PlayerFrame) end
-    RegisterStateDriver(PetActionBarFrame,"visibility", "hide")
-
-    --------------------------
-    -- Miscellaneous
-    --------------------------
-    -- Interface
     CharacterMicroButton:ClearAllPoints()
     CharacterMicroButton:SetPoint("BOTTOMRIGHT",UIParent,-260,0)
     CharacterMicroButton.SetPoint = function() end
+    MainMenuBarArtFrame.LeftEndCap:Hide()
+    MainMenuBarArtFrame.RightEndCap:Hide()
+    MainMenuBarArtFrameBackground:Hide()
+    MainMenuBarArtFrame.PageNumber:Hide()
     MicroButtonAndBagsBar:Hide()
+    PetActionButton1:ClearAllPoints()
+    StatusTrackingBarManager:Hide()
+    MainMenuBarVehicleLeaveButton:ClearAllPoints()
+    MainMenuBarVehicleLeaveButton:SetPoint("CENTER", UIParent, -500, -400)
+    MainMenuBarVehicleLeaveButton.SetPoint= function() end
     -- MicroButtonAndBagsBar:Hide()
     -- CharacterMicroButton:Hide()
     -- SpellbookMicroButton:Hide()
@@ -54,96 +38,91 @@ a:SetScript("OnEvent", function(self)
     -- StoreMicroButton.Show = function() end
     -- StoreMicroButton:Hide()
 
-    --------------------------
-    -- MainMenuBar
-    --------------------------
-    -- ActionButton 1-12
-    for i = 1, 12 do _G["ActionButton"..i]:SetScale(1.5) end
+    -- Move ActionBar
+    ActionButton1:ClearAllPoints()
+    ActionButton1:SetPoint("CENTER",-231,42)
+    -- ActionButton1.SetPoint = function() end
 
-    --------------------------
-    -- MultiBarBottomLeft
-    --------------------------
-    -- MultiBarBottomLeft
-    -- MultiBarBottomLeftButton1:SetPoint("BOTTOMLEFT",ActionButton1,"TOPLEFT",-106,45)
-    MultiBarBottomLeftButton1:SetPoint("BOTTOMLEFT",MultiBarBottomRightButton1,"TOPLEFT",-29,10)
-    MultiBarBottomLeftButton1.SetPoint = function() end
-    MultiBarBottomLeft.SetPoint = function() end
+    -- Move MultiBarBottomLeft
     MultiBarBottomLeft:ClearAllPoints()
-    MultiBarBottomLeft:SetPoint("BOTTOM", UIParent, "BOTTOM",0,200)
-    for i = 1, 12 do _G["MultiBarBottomLeftButton"..i]:SetScale(1.5) end
-    -- Individual Keys for MultiBarBottomLeft
-    for i = 5, 8 do _G["MultiBarBottomLeftButton"..i]:SetScale(2) end
+    MultiBarBottomLeft:SetPoint("LEFT", ActionButton1, "LEFT", 0, 47)
+    MultiBarBottomLeft.SetPoint = function() end
 
-    --------------------------
-    -- MultiBarBottomRight
-    --------------------------
-    -- MultiBarBottomRight
-    MultiBarBottomRightButton1:ClearAllPoints()
-    MultiBarBottomRightButton1:SetPoint("BOTTOMLEFT",ActionButton1,"TOPLEFT",0,5)
-    MultiBarBottomRightButton1.SetPoint = function() end
+    -- Move MutltiBarBottomRight and make it one bar
+    MultiBarBottomRight:ClearAllPoints()
+    MultiBarBottomRight:SetPoint("LEFT", MultiBarBottomLeft, "LEFT", 0, 47)
     MultiBarBottomRight.SetPoint = function() end
-    MultiBarBottomRightButton7:ClearAllPoints()
-    MultiBarBottomRightButton7:SetPoint("LEFT",MultiBarBottomRightButton6,"RIGHT",6,0)
+    MultiBarBottomRightButton1:ClearAllPoints() 
+    MultiBarBottomRightButton1:SetPoint("LEFT", MultiBarBottomLeft, "LEFT", -38, 52)      
+    MultiBarBottomRightButton1.SetPoint = function() end
+    MultiBarBottomRightButton7:ClearAllPoints() 
+    MultiBarBottomRightButton7:SetPoint("LEFT", MultiBarBottomRightButton6, "LEFT", 42, 0)      
     MultiBarBottomRightButton7.SetPoint = function() end
-    for i = 1, 12 do _G["MultiBarBottomRightButton"..i]:SetScale(1.5) end
 
-    --------------------------
-    -- MultiBarLeft
-    --------------------------
+    -- Move MultiBarLeft & Right
     MultiBarLeftButton1:ClearAllPoints()
-    MultiBarLeftButton1:SetPoint("CENTER",UIParent,"RIGHT",-60,200)
+    MultiBarLeftButton1:SetPoint("CENTER", UIParent,"RIGHT",-60,200)
     MultiBarLeftButton1.SetPoint = function() end
-    MultiBarLeft.SetPoint = function() end
-    for i = 1, 12 do _G["MultiBarLeftButton"..i]:SetScale(1.4) end
-
-    --------------------------
-    -- MultiBarRight
-    --------------------------
     MultiBarRightButton1:ClearAllPoints()
-    MultiBarRightButton1:SetPoint("CENTER",UIParent,"RIGHT",-20,200)
+    MultiBarRightButton1:SetPoint("CENTER", UIParent,"RIGHT",-20,200)
     MultiBarRightButton1.SetPoint = function() end
-    MultiBarRight.SetPoint = function() end
-    -- MultiBarRight:SetScale(1.0)
-    for i = 1, 12 do _G["MultiBarRightButton"..i]:SetScale(1.4) end
 
-    --------------------------
-    -- StanceBar
-    --------------------------
-    -- Set Stance Bar
+    -- Move StanceBar
     StanceBarFrame:SetMovable(true)
     StanceBarFrame:SetUserPlaced(true)
     StanceBarFrame:ClearAllPoints()
     StanceBarFrame:SetPoint("BOTTOM", CharacterMicroButton, "TOP",-7,170)
     StanceBarFrame:Hide()
 
-    --------------------------
-    -- ZoneAbility
-    --------------------------
-    -- ZoneAbility
+    -- Move PetBar
+    -- MainMenuBar:EnableMouse(false) -- To override MainMenuBar that is otherwise sharing the petbar space
+    PetActionButton1:ClearAllPoints()
+    PetActionButton1:SetPoint("BOTTOM", UIParent, -172, 10)
+    PetActionButton1.SetPoint = function() end
+
+    -- Hide Blizzard Art
+    MainMenuBarArtFrame.LeftEndCap:Hide()
+    MainMenuBarArtFrame.RightEndCap:Hide()
+    MainMenuBarArtFrameBackground:Hide()
+    MainMenuBarArtFrame.PageNumber:Hide()
+    StatusTrackingBarManager:Hide()
+
+    -- Extra Action Button
+    ExtraActionButton1:ClearAllPoints()
+    ExtraActionButton1:SetPoint("BOTTOM", UIParent, 0, 230)
+    ExtraActionButton1:SetScale(1.2)
+    ExtraActionButton1.SetPoint = function() end
+
+    -- Zone Ability
     ZoneAbilityFrame:ClearAllPoints()
     ZoneAbilityFrame:SetPoint("CENTER",UIParent,0,-420)
-    ZoneAbilityFrame:SetScale(2.0)
     ZoneAbilityFrame.SetPoint = function() end
+
+    -- Rescaling actionbuttons
+    for i = 1, 12 do _G["ActionButton"..i]:SetScale(1.4) end
+    for i = 1, 12 do _G["MultiBarRightButton"..i]:SetScale(1.4) end
+    for i = 1, 12 do _G["MultiBarLeftButton"..i]:SetScale(1.4) end
+    for i = 1, 12 do _G["MultiBarBottomLeftButton"..i]:SetScale(1.4) end
+    for i = 1, 12 do _G["MultiBarBottomRightButton"..i]:SetScale(1.4) end
+    for i = 5, 8 do _G["MultiBarBottomRightButton"..i]:SetScale(2) end
+    for i = 1, 10 do _G["PetActionButton"..i]:SetScale(1.2) end
 
     self:UnregisterAllEvents()
 end)
 
---------------------------
--- ActionBarFont
---------------------------
 -- Library (Shortcuts)
-local Expressway = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\Expressway.ttf"
-local BrutalBlack = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\BrutalType-Black.ttf"
-local BrutalBold = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\BrutalType-Bold.ttf"
-local BrutalExtraBold = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\BrutalType-ExtraBold.ttf"
-local BrutalLight = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\BrutalType-Light.ttf"
-local BrutalMedium = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\BrutalType-Medium.ttf"
-local BrutalRegular = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\BrutalType-Regular.ttf"
-local BrutalThin = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\BrutalType-Thin.ttf"
-local OpenSansCondensedBold = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\OpenSansCondensed-Bold.ttf"
-local PTSansNarrow = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\PTSansNarrow.ttf"
-local RobotoBold = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\Roboto-Bold.ttf"
-local RobotoMedium = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\Roboto-Medium.ttf"
+local Expressway = "Interface\\AddOns\\3XIQUI\\Media\\Fonts\\Expressway.ttf"
+local BrutalBlack = "Interface\\AddOns\\3XIQUI\\Media\\Fonts\\BrutalType-Black.ttf"
+local BrutalBold = "Interface\\AddOns\\3XIQUI\\Media\\Fonts\\BrutalType-Bold.ttf"
+local BrutalExtraBold = "Interface\\AddOns\\3XIQUI\\Media\\Fonts\\BrutalType-ExtraBold.ttf"
+local BrutalLight = "Interface\\AddOns\\3XIQUI\\Media\\Fonts\\BrutalType-Light.ttf"
+local BrutalMedium = "Interface\\AddOns\\3XIQUI\\Media\\Fonts\\BrutalType-Medium.ttf"
+local BrutalRegular = "Interface\\AddOns\\3XIQUI\\Media\\Fonts\\BrutalType-Regular.ttf"
+local BrutalThin = "Interface\\AddOns\\3XIQUI\\Media\\Fonts\\BrutalType-Thin.ttf"
+local OpenSansCondensedBold = "Interface\\AddOns\\3XIQUI\\Media\\Fonts\\OpenSansCondensed-Bold.ttf"
+local PTSansNarrow = "Interface\\AddOns\\3XIQUI\\Media\\Fonts\\PTSansNarrow.ttf"
+local RobotoBold = "Interface\\AddOns\\3XIQUI\\Media\\Fonts\\Roboto-Bold.ttf"
+local RobotoMedium = "Interface\\AddOns\\3XIQUI\\Media\\Fonts\\Roboto-Medium.ttf"
 -- ActionBarFont
 local f = CreateFrame("Frame")
 f:RegisterEvent("PLAYER_ENTERING_WORLD")
@@ -151,7 +130,7 @@ f:RegisterEvent("UPDATE_BINDINGS")
 f:SetScript("OnEvent", function(self)
     function updateHotKeyText()
         local ActionBars = {'Action','MultiBarBottomLeft','MultiBarBottomRight','MultiBarRight','MultiBarLeft'}
-        local DefaultFont, DefaultFontSize, DefaultFontOutline = BrutalBold, 14, "OUTLINE"
+        local DefaultFont, DefaultFontSize, DefaultFontOutline = Expressway, 14, "OUTLINE"
         -- local DefaultFont, DefaultFontSize, DefaultFontOutline = "Interface\\AddOns\\Kris3XIQUI\\Media\\Fonts\\OpenSansCondensed-Bold.ttf", 14, "OUTLINE"
         for _, barName in pairs(ActionBars) do
             for i = 1, 12 do
