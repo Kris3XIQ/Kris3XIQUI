@@ -85,7 +85,8 @@ a:SetScript("OnEvent", function(self)
     MainMenuBarArtFrame.RightEndCap:Hide()
     MainMenuBarArtFrameBackground:Hide()
     MainMenuBarArtFrame.PageNumber:Hide()
-    StatusTrackingBarManager:Hide()
+    StatusTrackingBarManager:Show()
+    -- StatusTrackingBarManager:Hide()
 
     -- Extra Action Button
     ExtraActionButton1:ClearAllPoints()
@@ -100,8 +101,8 @@ a:SetScript("OnEvent", function(self)
 
     -- Rescaling actionbuttons
     for i = 1, 12 do _G["ActionButton"..i]:SetScale(1.4) end
-    for i = 1, 12 do _G["MultiBarRightButton"..i]:SetScale(1.4) end
-    for i = 1, 12 do _G["MultiBarLeftButton"..i]:SetScale(1.4) end
+    for i = 1, 12 do _G["MultiBarRightButton"..i]:SetScale(1.2) end
+    for i = 1, 12 do _G["MultiBarLeftButton"..i]:SetScale(1.2) end
     for i = 1, 12 do _G["MultiBarBottomLeftButton"..i]:SetScale(1.4) end
     for i = 1, 12 do _G["MultiBarBottomRightButton"..i]:SetScale(1.4) end
     for i = 5, 8 do _G["MultiBarBottomRightButton"..i]:SetScale(2) end

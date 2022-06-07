@@ -13,9 +13,9 @@ a:SetScript("OnEvent", function(self)
 
     -- Player frame setup
     PlayerFrame:ClearAllPoints()
-    PlayerFrame:SetPoint("RIGHT", UIParent, "CENTER", -500, 200)
+    PlayerFrame:SetPoint("RIGHT", UIParent, "CENTER", -400, 150)
     PlayerFrame:SetUserPlaced(true);
-    PlayerFrame:SetScale(1.3)
+    PlayerFrame:SetScale(1.2)
     PlayerFrame.SetPoint = function() end
     PlayerPowerBarAlt:ClearAllPoints()
     PlayerPowerBarAlt:SetMovable(true)
@@ -25,14 +25,14 @@ a:SetScript("OnEvent", function(self)
 
     -- Target frame setup
     TargetFrame:ClearAllPoints()
-    TargetFrame:SetPoint("RIGHT", UIParent, "CENTER", -275, 200)
+    TargetFrame:SetPoint("LEFT", PlayerFrame, "RIGHT", -10, 0)
     TargetFrame:SetUserPlaced(true);
-    TargetFrame:SetScale(1.3)
+    TargetFrame:SetScale(1.2)
     TargetFrameSpellBar:SetScale(1.25)
 
     -- Set Cast Bar Scale / Position
     CastingBarFrame:ClearAllPoints()
-    CastingBarFrame:SetPoint("CENTER", UIParent, "CENTER", 0, -350)
+    CastingBarFrame:SetPoint("CENTER", UIParent, "CENTER", 0, -250)
     CastingBarFrame.SetPoint = function() end
     CastingBarFrame:SetHeight(14)
     CastingBarFrame:SetWidth(282)

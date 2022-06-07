@@ -6,4 +6,3 @@ Actionbars.lua
 Autorepair.lua
 Core.lua
 Nameplates.lua
-UIScale.lua
