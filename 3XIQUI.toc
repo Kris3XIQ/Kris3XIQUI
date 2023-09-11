@@ -3,6 +3,5 @@
 ## OptionalDeps: AdvancedInterfaceOptions
 
 Actionbars.lua
-Autorepair.lua
 Core.lua
 Nameplates.lua

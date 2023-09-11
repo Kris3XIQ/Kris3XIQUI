@@ -1,5 +1,5 @@
--- 3XIQ NamePlates
--- v1.0.0
+-- 3XIQUI NamePlates
+-- v2.1.1 Shadowlands
 
 --------------------------
 -- SetCVar
@@ -57,6 +57,9 @@ n:SetScript("OnEvent", function(n, event, ...)
             setupOptions.castIconWidth = 20 -- Default 10
 	        setupOptions.castIconHeight = 20 -- Default 10
 
+            -- Removes the issue with having a collection of raid icons above nameplates when generated
+            frame.SoftTargetFrame.Icon:Hide()
+            frame.RaidTargetFrame.RaidTargetIcon:Hide()
             -- NamePlate Font
             -- frame.name:SetFont(DefaultFont, DefaultFontSize, DefaultFontOutline)
 
@@ -69,7 +72,7 @@ n:SetScript("OnEvent", function(n, event, ...)
     ClassNameplateManaBarFrame.ManaCostPredictionBar:SetTexture(healthBarTexture)
 end)
 
-DEFAULT_CHAT_FRAME:AddMessage("|cffFF7D0A3XIQ: |r|cFF33FF22Nameplates loaded successfully|r")
+DEFAULT_CHAT_FRAME:AddMessage("|cffFF7D0A3XIQUI: |r|cFF33FF22Nameplates loaded successfully|r")
 
 -- hooksecurefunc("DefaultCompactNamePlateFrameAnchorInternal", function(frame, setupOptions)
 -- 	setupOptions.healthBarHeight = 8 -- 4 Default
